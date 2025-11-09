@@ -13,24 +13,37 @@
             if (usuario != null)
             {
                 MostrarMenu(usuario);
+            } else
+            {
+               IO.MostrarError("Demasiados intentos fallidos. Saliendo...");
             }
         }
 
         public static string IniciarSesion()
         {
+            string id = IO.LeerTexto("Ingrese su ID de usuario: ");
             for (int intentos = 0; intentos < 3; intentos++)
             {
-                string id = IO.LeerTexto("Ingrese su ID de usuario: ");
-                string pin = IO.LeerPin("Ingrese su PIN: ");
-                if (Data.ValidarUsuario(id, pin))
+                if (!Data.ValidarId(id))
                 {
-                    IO.MostrarMensaje("Inicio de sesión exitoso.");
-                    return id;
+                    IO.MostrarError("Id incorrecto.");
+                    IniciarSesion();
                 }
-                IO.MostrarError("ID o PIN incorrecto.");
+                else {
+                    string pin = IO.LeerPin("Ingrese su PIN: ");
+                    if (Data.ValidarUsuario(id, pin))
+                        {
+                            IO.MostrarMensaje("Inicio de sesión exitoso.");
+                            return id;
+                        }
+                    IO.MostrarError("PIN incorrecto.");
+                    }
+                if (!(intentos < 3)) { 
+                    return null;
+                }
             }
-            IO.MostrarError("Demasiados intentos fallidos. Saliendo...");
-            return null;                                                                                                     
+            return null;
+
         }
 
         public static void MostrarMenu(string usuario)

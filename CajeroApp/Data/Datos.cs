@@ -10,19 +10,21 @@ namespace CajeroApp.Data
         public static bool ValidarUsuario(string id, string pin)
         {
             int posicion = Array.IndexOf(Usuarios, id);
-            if (posicion != -1)
-            {
-                string acceso = Pines[posicion];
-                if (pin == acceso)
-                {
+            if (posicion == -1) {
+                return false;
+            }
+          
+            string acceso = Pines[posicion];
+            if (pin == acceso){
                     return true;
                 }
-            }
-         
+                return false;
+        }
 
-            
-
-            return false;
+        public static bool ValidarId(string id) {
+            int posicionId = Array.IndexOf(Usuarios, id);
+            if (posicionId == -1) return false;
+            return true;
         }
 
         public static decimal ObtenerSaldo(string id)
