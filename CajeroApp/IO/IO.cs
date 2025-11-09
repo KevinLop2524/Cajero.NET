@@ -1,6 +1,5 @@
 using System;
 
-
 namespace CajeroApp.IO
 {
     public static class IO

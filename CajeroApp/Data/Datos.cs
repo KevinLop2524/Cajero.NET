@@ -1,5 +1,6 @@
 namespace CajeroApp.Data
 {
+    using System;
     public static class Data
     {
         public static string[] Usuarios = { "1001", "2002" };
@@ -8,11 +9,8 @@ namespace CajeroApp.Data
 
         public static bool ValidarUsuario(string id, string pin)
         {
-            for (int i = 0; i < Usuarios.Length; i++)
-            {
-                if (Usuarios[i] == id && Pines[i] == pin)
-                    return true;
-            }
+            int posicion = Array.IndexOf(Usuarios, id);
+            if (posicion != -1) { return true; }
             return false;
         }
 
