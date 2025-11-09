@@ -48,7 +48,7 @@ namespace CajeroApp.IO
         public static void Pausar()
         {
             Console.WriteLine("\nPresione una tecla para continuar...");
-            Console.ReadKey();
+            Console.ReadKey(true);
         }
     }
 }

@@ -44,7 +44,18 @@
                 IO.MostrarMensaje("3. Retirar");
                 IO.MostrarMensaje("4. Salir");
 
-                opcion = int.Parse(IO.LeerTexto("Seleccione una opción: "));
+                string entrada = IO.LeerTexto("Seleccione una opción: ");
+
+                while (!int.TryParse(entrada, out opcion) || opcion < 1 || opcion > 4)
+                {
+                    IO.MostrarError("Opción inválida. Debe ser un número entre 1 y 4.");
+                    entrada = IO.LeerTexto("Seleccione una opción: ");
+                }
+
+                if (opcion == 4)
+                {
+                    IO.MostrarMensaje("Gracias por usar el servicio. Vuelve pronto.");
+                }
 
                 switch (opcion)
                 {
@@ -52,6 +63,7 @@
                     case 2: Operaciones.Depositar(usuario); break;
                     case 3: Operaciones.Retirar(usuario); break;
                 }
+
             } while (opcion != 4);
         }
     }

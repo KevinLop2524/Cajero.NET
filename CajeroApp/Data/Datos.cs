@@ -3,14 +3,25 @@ namespace CajeroApp.Data
     using System;
     public static class Data
     {
-        public static string[] Usuarios = { "1001", "2002" };
-        public static string[] Pines = { "1234", "5678" };
-        public static decimal[] Saldos = { 500000m, 1200000m };
+        public static string[] Usuarios = [ "1001", "2002" ];
+        public static string[] Pines = [ "1234", "5678" ];
+        public static decimal[] Saldos = [ 500000m, 1200000m ];
 
         public static bool ValidarUsuario(string id, string pin)
         {
             int posicion = Array.IndexOf(Usuarios, id);
-            if (posicion != -1) { return true; }
+            if (posicion != -1)
+            {
+                string acceso = Pines[posicion];
+                if (pin == acceso)
+                {
+                    return true;
+                }
+            }
+         
+
+            
+
             return false;
         }
 

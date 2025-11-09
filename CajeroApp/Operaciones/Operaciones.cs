@@ -14,12 +14,12 @@ namespace CajeroApp.Operaciones
 
         public static void Depositar(string id)
         {
-            decimal monto;
+            int monto;
             string entrada = IO.LeerTexto("Ingrese el monto a depositar: ");
 
-            while (!decimal.TryParse(entrada, out monto) || monto <= 0)
+            while (!int.TryParse(entrada, out monto) || monto <= 0 || monto % 100 != 0 || monto>2500000)
             {
-                IO.MostrarError("Monto inválido. Ingrese un número decimal mayor que 0.");
+                IO.MostrarError("Monto inválido. Ingrese un número entero multiplo de 100 y menor que $2'500.000");
                 entrada = IO.LeerTexto("Ingrese el monto a depositar: ");
             }
 
@@ -33,12 +33,12 @@ namespace CajeroApp.Operaciones
 
         public static void Retirar(string id)
         {
-            decimal monto;
+            int monto;
             string entrada = IO.LeerTexto("Ingrese el monto a retirar: ");
 
-            while (!decimal.TryParse(entrada, out monto) || monto <= 0)
+            while (!int.TryParse(entrada, out monto) || monto < 100 || monto%100!=0)
             {
-                IO.MostrarError("Monto inválido. Ingrese un número decimal mayor que 0.");
+                IO.MostrarError("Monto inválido. Solicite retirar un multiplo de 100");
                 entrada = IO.LeerTexto("Ingrese el monto a retirar: ");
             }
 
