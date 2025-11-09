@@ -14,30 +14,49 @@ namespace CajeroApp.Operaciones
 
         public static void Depositar(string id)
         {
-            decimal monto = decimal.Parse(IO.LeerTexto("Ingrese el monto a depositar: "));
-            if (monto > 0)
+            decimal monto;
+            string entrada = IO.LeerTexto("Ingrese el monto a depositar: ");
+
+            while (!decimal.TryParse(entrada, out monto) || monto <= 0)
             {
-                decimal saldoActual = Data.ObtenerSaldo(id);
-                Data.ActualizarSaldo(id, saldoActual + monto);
-                IO.MostrarMensaje("Depósito realizado correctamente.");
+                IO.MostrarError("Monto inválido. Ingrese un número decimal mayor que 0.");
+                entrada = IO.LeerTexto("Ingrese el monto a depositar: ");
             }
-            else IO.MostrarError("Monto inválido.");
+
+            decimal saldoActual = Data.ObtenerSaldo(id);
+            Data.ActualizarSaldo(id, saldoActual + monto);
+            IO.MostrarMensaje("Depósito realizado correctamente.");
+
             IO.Pausar();
         }
 
+
         public static void Retirar(string id)
         {
-            decimal monto = decimal.Parse(IO.LeerTexto("Ingrese el monto a retirar: "));
+            decimal monto;
+            string entrada = IO.LeerTexto("Ingrese el monto a retirar: ");
+
+            while (!decimal.TryParse(entrada, out monto) || monto <= 0)
+            {
+                IO.MostrarError("Monto inválido. Ingrese un número decimal mayor que 0.");
+                entrada = IO.LeerTexto("Ingrese el monto a retirar: ");
+            }
+
             decimal saldoActual = Data.ObtenerSaldo(id);
 
-            if (monto <= 0) IO.MostrarError("Monto inválido.");
-            else if (monto > saldoActual) IO.MostrarError("Fondos insuficientes.");
+            if (monto > saldoActual)
+            {
+                IO.MostrarError("Fondos insuficientes.");
+            }
             else
             {
                 Data.ActualizarSaldo(id, saldoActual - monto);
                 IO.MostrarMensaje("Retiro realizado exitosamente.");
             }
+
             IO.Pausar();
         }
+
     }
 }
+
