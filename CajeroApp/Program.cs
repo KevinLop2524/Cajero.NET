@@ -7,16 +7,11 @@
     public class Program
     {
         public static void Main()
-        {
+        {   
             IO.MostrarTitulo("Bienvenido a CajeroLite");
             string usuario = IniciarSesion();
-            if (usuario != null)
-            {
-                MostrarMenu(usuario);
-            } else
-            {
-               IO.MostrarError("Demasiados intentos fallidos. Saliendo...");
-            }
+            if (usuario != null) MostrarMenu(usuario);
+            else IO.MostrarError("Demasiados intentos fallidos. Saliendo...");     
         }
 
         public static string IniciarSesion()
@@ -27,23 +22,21 @@
                 if (!Data.ValidarId(id))
                 {
                     IO.MostrarError("Id incorrecto.");
-                    IniciarSesion();
+                    intentos = -1;
+                    id = IO.LeerTexto("Ingrese su ID de usuario: ");
                 }
-                else {
+                else
+                {
                     string pin = IO.LeerPin("Ingrese su PIN: ");
                     if (Data.ValidarUsuario(id, pin))
-                        {
-                            IO.MostrarMensaje("Inicio de sesión exitoso.");
-                            return id;
-                        }
-                    IO.MostrarError("PIN incorrecto.");
+                    {
+                        IO.MostrarMensaje("Inicio de sesión exitoso.");
+                        return id;
                     }
-                if (!(intentos < 3)) { 
-                    return null;
-                }
+                    IO.MostrarError("PIN incorrecto.");
+                }                          
             }
             return null;
-
         }
 
         public static void MostrarMenu(string usuario)

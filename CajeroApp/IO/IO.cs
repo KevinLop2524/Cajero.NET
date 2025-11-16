@@ -30,15 +30,29 @@ namespace CajeroApp.IO
 
         public static string LeerPin(string mensaje)
         {
+            int maxLength = 4;//se declara el maximo de cuantos caracteres puede añadir a la contraseña
             Console.Write(mensaje);
             string pin = "";
             ConsoleKeyInfo tecla;
             while ((tecla = Console.ReadKey(true)).Key != ConsoleKey.Enter)
             {
+                //hacer que cuando el usuario presione la tecla delete se elimine del pin el ultimo caracter, muy interesante
+                if (tecla.Key == ConsoleKey.Backspace && pin.Length>0)
+                {
+                 pin= pin.Substring(0, pin.Length-1);
+                 Console.Write("\b \b");
+                 continue;   
+                }
+                
                 if (char.IsDigit(tecla.KeyChar))
                 {
-                    pin += tecla.KeyChar;
-                    Console.Write("*");
+
+                    //se valida que el pin sea menor al maximo de caracteres
+                    if (pin.Length < maxLength)
+                    {
+                        pin += tecla.KeyChar;
+                        Console.Write("*");
+                    }
                 }
             }
             Console.WriteLine();

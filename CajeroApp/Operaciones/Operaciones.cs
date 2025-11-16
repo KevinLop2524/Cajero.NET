@@ -19,7 +19,7 @@ namespace CajeroApp.Operaciones
 
             while (!int.TryParse(entrada, out monto) || monto <= 0 || monto % 100 != 0 || monto>2500000)
             {
-                IO.MostrarError("Monto inválido. Ingrese un número entero multiplo de 100 y menor que $2'500.000");
+                IO.MostrarError("Monto inválido. Ingrese un número entero multiplo de 100 y menor o igual que $2'500.000");//corrección en coherencia del mensaje con la acción.
                 entrada = IO.LeerTexto("Ingrese el monto a depositar: ");
             }
 

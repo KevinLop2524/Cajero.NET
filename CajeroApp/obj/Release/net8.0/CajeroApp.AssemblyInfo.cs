@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CajeroApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1851d28e2c73a44976133dd1f0e6a6a462b6603")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6025c00d60b82ef34895fa20f960f7d6ec7c3d1b")]
 [assembly: System.Reflection.AssemblyProductAttribute("CajeroApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CajeroApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

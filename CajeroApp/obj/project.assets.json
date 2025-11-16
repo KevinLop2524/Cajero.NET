@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USUARIO\\Documents\\.NET Cajero\\CajeroApp\\CajeroApp.csproj",
+      "projectUniqueName": "C:\\Users\\USUARIO\\Desktop\\Cajero.NET\\CajeroApp\\CajeroApp.csproj",
       "projectName": "CajeroApp",
-      "projectPath": "C:\\Users\\USUARIO\\Documents\\.NET Cajero\\CajeroApp\\CajeroApp.csproj",
+      "projectPath": "C:\\Users\\USUARIO\\Desktop\\Cajero.NET\\CajeroApp\\CajeroApp.csproj",
       "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USUARIO\\Documents\\.NET Cajero\\CajeroApp\\obj\\",
+      "outputPath": "C:\\Users\\USUARIO\\Desktop\\Cajero.NET\\CajeroApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
